@@ -8,45 +8,55 @@ import React from "react";
 
 class MyComponent extends React.Component {
   state = {
-    name: "ThanhTuyen",
-    age: 21,
-    phone: "0396172224",
+    firstName: "",
+    lastName: "",
   };
 
-  handleOnChangeName = (event) => {
+  handleChangeFirstName = (event) => {
     this.setState({
-      name: event.target.value,
+      firstName: event.target.value,
     });
   };
 
-  handleOnclickButton = () => {
-    alert("click me");
+  handleChangeLastName = (event) => {
+    this.setState({
+      lastName: event.target.value,
+    });
+  };
+
+  handleClickSubmit = (event) => {
+    event.preventDefault();
+    alert(this.state.firstName + " " + this.state.lastName);
   };
 
   render() {
-    let name = "Lui Lui";
-
     return (
-      <div className="container">
-        <div>
+      <>
+        <form>
+          <label htmlFor="fname">First name:</label>
+          <br />
           <input
-            value={this.state.name}
             type="text"
-            onChange={(event) => this.handleOnChangeName(event)}
+            value={this.state.firstName}
+            onChange={(event) => this.handleChangeFirstName(event)}
           />
-        </div>
-
-        <div className="printName">
-          <h3>
-            Name: {this.state.name}, Age: {this.state.age}, Phone:{" "}
-            {this.state.phone}
-          </h3>
-        </div>
-
-        <div className="third">
-          <button onClick={() => this.handleOnclickButton()}>Click me</button>
-        </div>
-      </div>
+          <br />
+          <label htmlFor="lname">Last name:</label>
+          <br />
+          <input
+            type="text"
+            value={this.state.lastName}
+            onChange={(event) => this.handleChangeLastName(event)}
+          />
+          <br />
+          <br />
+          <input
+            type="button"
+            value="Submit"
+            onClick={(event) => this.handleClickSubmit(event)}
+          />
+        </form>
+      </>
     );
   }
 }
