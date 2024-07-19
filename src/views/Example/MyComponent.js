@@ -1,4 +1,5 @@
 import { eventWrapper } from "@testing-library/user-event/dist/utils";
+import ChildComponent from "./ChildComponent";
 import React from "react";
 
 /**
@@ -56,6 +57,9 @@ class MyComponent extends React.Component {
             onClick={(event) => this.handleClickSubmit(event)}
           />
         </form>
+        <ChildComponent name={"Child one"} />
+        <ChildComponent name={"Child two"} />
+        <ChildComponent name={"Child three"} />
       </>
     );
   }
