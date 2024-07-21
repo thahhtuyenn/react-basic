@@ -6,47 +6,70 @@ import React from "react";
  * bắt buộc trả về 1 phần tử của html
  */
 
-// class ChildComponent extends React.Component {
-//   render() {
-//     let { name, age, address, arrJobs } = this.props;
-//     return (
-//       <>
-//         <div>
-//           Child component {name} - {age} - {address}
-//           <div className="list-jobs">
-//             {arrJobs.map((value, index) => {
+class ChildComponent extends React.Component {
+  state = {
+    showJob: false,
+  };
+
+  handleShowHide = () => {
+    this.setState({
+      showJob: !this.state.showJob,
+    });
+  };
+
+  render() {
+    let { arrJobs } = this.props;
+    let { showJob } = this.state;
+    let check = showJob === true ? "showJob = true" : "showJob = false";
+    console.log(">>>Check conditional: ", check);
+    return (
+      <>
+        {showJob === false ? (
+          <div>
+            <button onClick={() => this.handleShowHide()}>Show</button>
+          </div>
+        ) : (
+          <>
+            <div className="list-jobs">
+              {arrJobs.map((value, index) => {
+                return (
+                  <div key={value.id}>
+                    {value.title} - {value.salary}
+                  </div>
+                );
+              })}
+            </div>
+            <div>
+              <button onClick={() => this.handleShowHide()}>Hide</button>
+            </div>
+          </>
+        )}
+      </>
+    );
+  }
+}
+
+// const ChildComponent = (props) => {
+//   console.log(">>>Check child props: ", props);
+//   let { name, age, address, arrJobs } = props;
+//   return (
+//     <>
+//       <div>
+//         Child component {name} - {age} - {address}
+//         <div className="list-jobs">
+//           {arrJobs.map((value, index) => {
+//             if (value.salary >= 500) {
 //               return (
 //                 <div key={value.id}>
-//                   {value.title} - {value.salary}
+//                   {value.title} - {value.salary}$
 //                 </div>
 //               );
-//             })}
-//           </div>
+//             }
+//           })}
 //         </div>
-//       </>
-//     );
-//   }
-// }
-
-const ChildComponent = (props) => {
-  console.log(">>>Check child props: ", props);
-  let { name, age, address, arrJobs } = props;
-  return (
-    <>
-      <div>
-        Child component {name} - {age} - {address}
-        <div className="list-jobs">
-          {arrJobs.map((value, index) => {
-            return (
-              <div key={value.id}>
-                {value.title} - {value.salary}
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </>
-  );
-};
+//       </div>
+//     </>
+//   );
+// };
 
 export default ChildComponent;
