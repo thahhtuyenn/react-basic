@@ -6,48 +6,47 @@ import React from "react";
  * bắt buộc trả về 1 phần tử của html
  */
 
-class ChildComponent extends React.Component {
-  state = {
-    firstName: "",
-    lastName: "",
-  };
+// class ChildComponent extends React.Component {
+//   render() {
+//     let { name, age, address, arrJobs } = this.props;
+//     return (
+//       <>
+//         <div>
+//           Child component {name} - {age} - {address}
+//           <div className="list-jobs">
+//             {arrJobs.map((value, index) => {
+//               return (
+//                 <div key={value.id}>
+//                   {value.title} - {value.salary}
+//                 </div>
+//               );
+//             })}
+//           </div>
+//         </div>
+//       </>
+//     );
+//   }
+// }
 
-  handleChangeFirstName = (event) => {
-    this.setState({
-      firstName: event.target.value,
-    });
-  };
-
-  handleChangeLastName = (event) => {
-    this.setState({
-      lastName: event.target.value,
-    });
-  };
-
-  handleClickSubmit = (event) => {
-    event.preventDefault();
-    alert(this.state.firstName + " " + this.state.lastName);
-  };
-
-  render() {
-    let { name, age, address, arrJobs } = this.props;
-    return (
-      <>
-        <div>
-          Child component {name} - {age} - {address}
-          <div className="list-jobs">
-            {arrJobs.map((value, index) => {
-              return (
-                <div key={value.id}>
-                  {value.title} - {value.salary}
-                </div>
-              );
-            })}
-          </div>
+const ChildComponent = (props) => {
+  console.log(">>>Check child props: ", props);
+  let { name, age, address, arrJobs } = props;
+  return (
+    <>
+      <div>
+        Child component {name} - {age} - {address}
+        <div className="list-jobs">
+          {arrJobs.map((value, index) => {
+            return (
+              <div key={value.id}>
+                {value.title} - {value.salary}
+              </div>
+            );
+          })}
         </div>
-      </>
-    );
-  }
-}
+      </div>
+    </>
+  );
+};
 
 export default ChildComponent;
