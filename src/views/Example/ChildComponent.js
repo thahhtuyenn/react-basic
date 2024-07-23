@@ -17,11 +17,14 @@ class ChildComponent extends React.Component {
     });
   };
 
+  handleOnClickDelete = (item) => {
+    this.props.deleteAJob(item);
+  };
+
   render() {
     let { arrJobs } = this.props;
     let { showJob } = this.state;
     let check = showJob === true ? "showJob = true" : "showJob = false";
-    console.log(">>>Check conditional: ", check);
     return (
       <>
         {showJob === false ? (
@@ -34,7 +37,10 @@ class ChildComponent extends React.Component {
               {arrJobs.map((value, index) => {
                 return (
                   <div key={value.id}>
-                    {value.title} - {value.salary}
+                    {value.title} - {value.salary} <></>{" "}
+                    <span onClick={() => this.handleOnClickDelete(value)}>
+                      x
+                    </span>
                   </div>
                 );
               })}
