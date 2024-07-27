@@ -1,6 +1,10 @@
 import React from "react";
 
 class ChildTodo extends React.Component {
+  handleClickDelete = (todo) => {
+    this.props.deleteOneTodo(todo);
+  };
+
   render() {
     let { listToDo } = this.props;
     return (
@@ -16,8 +20,15 @@ class ChildTodo extends React.Component {
                       {index + 1} - {item.title}
                     </span>
                     <div className="action">
-                      <button className="btn-edit">Edit</button>
-                      <button className="btn-delete">Delete</button>
+                      <input type="submit" value="Edit" className="btn-edit" />
+                      <input
+                        type="submit"
+                        value="Delete"
+                        className="btn-delete"
+                        onClick={() => {
+                          this.handleClickDelete(item);
+                        }}
+                      />
                     </div>
                   </div>
                 </>
