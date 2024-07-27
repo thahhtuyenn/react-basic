@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.scss";
-import MyComponent from "./Example/MyComponent";
+import ListTodo from "./Todos/ListTodo";
 
 /**
  * 2 components: class component / function component (function, arrow)
@@ -13,12 +13,8 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-
-        {/* <MyComponent /> */}
-        <MyComponent></MyComponent>
+        <p>Simple TODO Apps with React.js</p>
+        <ListTodo />
       </header>
     </div>
   );

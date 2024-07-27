@@ -1,5 +1,6 @@
 import { eventWrapper } from "@testing-library/user-event/dist/utils";
 import React from "react";
+import "./Demo.css";
 
 /**
  * JSX --> return block
@@ -29,7 +30,9 @@ class ChildComponent extends React.Component {
       <>
         {showJob === false ? (
           <div>
-            <button onClick={() => this.handleShowHide()}>Show</button>
+            <button className="btn-show" onClick={() => this.handleShowHide()}>
+              Show
+            </button>
           </div>
         ) : (
           <>
