@@ -2,6 +2,7 @@ import React from "react";
 import "./Todo.scss";
 import ChildTodo from "./ChildTodo";
 import AddTodo from "./AddTodo";
+import { toast } from "react-toastify";
 
 class ListTodo extends React.Component {
   state = {
@@ -19,7 +20,7 @@ class ListTodo extends React.Component {
   };
 
   deleteOneTodo = (todo) => {
-    let { currentListToDo } = this.state;
+    let currentListToDo = this.state.listToDo;
     currentListToDo = currentListToDo.filter((item) => item.id !== todo.id);
     this.setState({
       listToDo: currentListToDo,

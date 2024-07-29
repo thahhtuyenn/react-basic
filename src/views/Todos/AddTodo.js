@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 
 class AddTodo extends React.Component {
   state = {
@@ -15,7 +16,8 @@ class AddTodo extends React.Component {
   handleAddTodo = (event) => {
     event.preventDefault();
     if (!this.state.title) {
-      alert("Missing required params!");
+      toast.error("Missing required params!");
+
       return;
     }
 
@@ -23,6 +25,8 @@ class AddTodo extends React.Component {
       id: Math.floor(Math.random() * 111),
       title: this.state.title,
     });
+
+    toast.success("Add to do success!");
 
     this.setState({
       id: "",
@@ -32,26 +36,24 @@ class AddTodo extends React.Component {
 
   render() {
     return (
-      <>
-        <div className="add-todo">
-          <input
-            value={this.state.title}
-            onChange={(event) => {
-              this.handleChangeTodo(event);
-            }}
-            className=""
-            type="text"
-          />
-          <input
-            className="btn-add"
-            type="button"
-            value="Add"
-            onClick={(event) => {
-              this.handleAddTodo(event);
-            }}
-          />
-        </div>
-      </>
+      <div className="add-todo">
+        <input
+          value={this.state.title}
+          onChange={(event) => {
+            this.handleChangeTodo(event);
+          }}
+          className=""
+          type="text"
+        />
+        <input
+          className="btn-add"
+          type="button"
+          value="Add"
+          onClick={(event) => {
+            this.handleAddTodo(event);
+          }}
+        />
+      </div>
     );
   }
 }

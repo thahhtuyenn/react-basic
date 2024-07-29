@@ -1,8 +1,10 @@
 import React from "react";
+import { toast } from "react-toastify";
 
 class ChildTodo extends React.Component {
   handleClickDelete = (todo) => {
     this.props.deleteOneTodo(todo);
+    toast.info("Deleted one to do.");
   };
 
   render() {
@@ -15,7 +17,7 @@ class ChildTodo extends React.Component {
             listToDo.map((item, index) => {
               return (
                 <>
-                  <div className="todo-child" key={item.id}>
+                  <div className="todo-child">
                     <span>
                       {index + 1} - {item.title}
                     </span>
