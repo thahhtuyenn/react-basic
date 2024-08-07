@@ -6,39 +6,15 @@ class ChildTodo extends React.Component {
     this.props.deleteOneTodo(todo);
     toast.info("Deleted one to do.");
   };
+  handleClickEdit = (todo) => {
+    this.props.editOneTodo(todo);
+  };
+  handleChangeEdit = (event) => {};
 
   render() {
-    let { listToDo } = this.props;
-    return (
-      <>
-        <div className="list-todo-content">
-          {listToDo &&
-            listToDo.length > 0 &&
-            listToDo.map((item, index) => {
-              return (
-                <>
-                  <div className="todo-child">
-                    <span>
-                      {index + 1} - {item.title}
-                    </span>
-                    <div className="action">
-                      <input type="submit" value="Edit" className="btn-edit" />
-                      <input
-                        type="submit"
-                        value="Delete"
-                        className="btn-delete"
-                        onClick={() => {
-                          this.handleClickDelete(item);
-                        }}
-                      />
-                    </div>
-                  </div>
-                </>
-              );
-            })}
-        </div>
-      </>
-    );
+    let { listToDo, editTodo } = this.props;
+    let isEmptyObj = Object.keys(editTodo).length === 0;
+    return <></>;
   }
 }
 
